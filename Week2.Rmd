@@ -1,0 +1,30 @@
+---
+title: "Developing data product-week2"
+author: "Lu Li"
+date: "July 7, 2019"
+output: 
+  html_document:
+          keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## July  7, 2019
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+library(leaflet)
+md_cities <- data.frame(name = c("Toronto", "Waterloo", "Kitchener","Ottawa",                                  "London", "Winsor", "Kingston","Guelph"),
+                        pop = c(2731571,113520, 242368,994837,404699,233763,136685,135474 ),
+                        lat = c(43.6532,43.4643,43.4516, 45.4215,42.9849,42.3149,44.2312,43.5448),
+                        lng = c(-79.3832,-80.5204,-80.4925,-75.6972,-81.2453,-83.0364,-76.4860,-80.2482
+                                ))
+md_cities %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers()%>%
+  addCircles(weight = 1, radius = sqrt(md_cities$pop) * 30)
+```
+
+
